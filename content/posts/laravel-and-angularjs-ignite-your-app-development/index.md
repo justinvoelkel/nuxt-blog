@@ -1,0 +1,33 @@
+---
+title: Laravel and AngularJS - Ignite Your App Development
+date: 2014-03-12T20:37:53.000Z
+description: Laravel and AngularJS - Ignite Your App Development
+---
+
+![Laravel loves AngularJS](http://justinvoelkel.me/wp-content/uploads/2014/03/laravel-loves-angular-300x125.png)So I’ve been away for a while – actually, and more precisely, I’ve been rewriting my company’s homebrew CMS. This has involved more reading, knowledge absorption, and coffee than I’d care to mention, but it’s really coming along well. It’s actually long overdue, the initial project was meant to be basic in browser editor for our writers to go in and dump their text, but it turned into an unyielding spaghetti code monstrosity with far more necessary features than initially thought. It was really my first dive it PHP and OOP programming so I’ll cut myself a bit of slack.
+
+Moving forward and looking at the next iteration I wanted to create something much better (*welcome back captain obvious we’ve missed you*). I did my fair share of reading around the web and I came across some popular choices: [CakePHP](http://cakephp.org/ "Cake PHP framework"), [Rails](http://rubyonrails.org/ "Ruby On Rails"), [Zend](http://framework.zend.com/ "Zend Framework"), and endless amounts of javascript options (ember, backbone, etc). I decided I wanted to stick to a PHP solution to keep things familiar so that removed Rails (although I still very much would like to build something on it) – I [kicked the tires on CakePHP](http://justinvoelkel.me/wonderful-world-php-frameworks-cakephp-laravel/ "The Wonderful World of PHP Frameworks: CakePHP and Laravel") but was less than enthused with the endless nested arrays. While researching I kept hearing about Laravel and it’s mercurial rise to stardom in the PHP community. After still more reading and trying out some very basic tutorials I decided it was for me. Shortly after making that choice I attended a local meetup all about AngularJS. I was really impressed with the two way data binding and the more complex examples that other developers brought to show off. That I night I started looking at examples of pairing javascript frameworks with Laravel and was intrigued by what people were writing. Quite a few folks paired Laravel with Backbone but there were a select few who wrote about how the pairing of Laravel and AngularJS was even better. I think it was after the second article I read that I decided to welcome Angular to my project. I decided to write this as part one to a series of examples to demonstrate why this pair works so well together.
+
+
+## How Laravel and Angular Work Together
+
+A content management system is totally dependent upon saving records to some sort of database – agreed? So, again in the interest of keeping things familiar I was hoping to use MySQL to store records (that is what I’ve used and where the current DB resides). Laravel can connect to a variety of different database types such as mysql, postgres, sqlite, and sql server but Angular ,on the other hand, is typically paired with MongoDB in something like a [MEAN stack](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and "MEAN Stack - Mongo and AngularJS"). It goes without saying then, that Angular wouldn’t be doing any direct interactions with the database, so, how would they fit together?
+
+After looking around a bit I came across [Chris Sevilleja’s post over at Scotch.io ](http://scotch.io/tutorials/php/create-a-laravel-and-angular-single-page-comment-application "Scotch.io - AngularJS and Laravel")about this very subject. In this type of project Laravel works as an API layer between Angular and the database. Angular’s HTTP service makes it really easy to submit any form of data to a Laravel route (or more often a resource route) to perform CRUD operations. Likewise, when returning a variable from a controller in Laravel the array data is automatically cast to JSON which makes it incredibly easy to then parse within Angular. That is really the entire process – send get, put, delete requests with data, parse response, rinse and repeat.
+
+
+## Why Is It Awesome?
+
+Full disclosure; this is my opinion and I don’t have anything comparable to measure it against other than simply using Laravel by itself. With that said, this combo has proven itself to me, to be extraordinarily powerful for a few reasons. For one, it allows you to really rapidly develop a high quality application – this can be said for a lot of frameworks and framework pairings. Second, the separation of concerns is great.  Angular helps, and encourages, you to keep your front end nice and modular – separating your controllers, services, and templates – you can never have too much organization. Stepping back from that, it also allows you to keep that Angular logic fully segregated from your database logic controlled by Laravel with a nice clean HTTP/JSON handshake in between. The added value to this setup is that either Angular or Laravel could be swapped out for another framework or something of your own brewing when and if that time should arrive. Since the interaction between the two is HTTP/JSON it makes it quick and easy to fork your project because the communication types are totally framework agnostic. Last, you get the sugar from both of the frameworks that both do their own thing really well. As I mentioned above, the two way data binding in Angular is boss, and, you can pair it with Angular UI and Bootstrap css to speed up you development process while still delivering a polished and very usable product. I guess I should probably not fail to mention that it’s like *really* fast too. CRUD operations don’t even require a reload of the page – just click a button, santize/verify data, do your Laravel magic and, voila!
+
+
+## Conclusion
+
+I’m far from an expert on implementing this stuff; I just started after all. But coming from a major project where I wrote quite a bit of procedural code that was eventually rolled over to OO code I’ve got good perspective on why frameworks blow that process out of the water – in my case at least. Like I said above, this is just the first in a few part series. I’m planning on putting together a sample application to really demonstrate why the pairing is so powerful. Stay tuned, those should be coming down the pipe soon!
+
+<div class="notice  ">
+# Part One
+
+Well, it took a month but I’ve published the first part of my multi part series on Laravel and Angular. [Check out Part One – Prep Your App](http://justinvoelkel.me/laravel-angularjs-part-one-prep-your-app/ "Laravel and AngularJS: Part One – Prep Your App")
+
+<div class="clear"></div></div>

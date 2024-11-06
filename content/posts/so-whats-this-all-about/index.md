@@ -1,0 +1,17 @@
+---
+title: So, What's This All About?
+date: 2013-10-09T07:43:09.000Z
+description: So, What's This All About?
+---
+
+The title says it all. Lots of people have blogs; what the heck is mine about? Let me tell you what it’s not, right now at least. I’m no web. This isn’t meant to be an end all resource for all developers like other blog’s are. I’m just going to be documenting my everyday problems and their solutions, and if that helps someone down the road – all the better.  I’ll also throw my two cents in on some general web dev and design stuff too. Ultimately, my goal is to document and research problems to help myself and others in the process.
+
+Let me give you a bit of background so that you know exactly where I’m coming from. I’m currently a web developer in Cleveland, Ohio and I work for a small-ish start up company. I started this job after working for a small development firm for nearly three years after graduating college. That’s where this all begins.
+
+After graduating college I didn’t really know what I wanted to do. Typical, right? My degree is in Management Information Systems which, for those of you that don’t know, is a degree that focuses on the business side of computing and IT. Ideally, you become an IT manager or Business Analyst or something along those lines. But, the courses that really interested me were about web development. So long story short, after graduation, I applied for several developer positions and was hired into this small (four people) firm. This firm, which will remain anonymous, was filled with great people who worked extremely hard each day. However, over time, I came to realize  that despite the great people I worked with, it was lacking a bit of leadership and had very little to offer in the way of mentoring. At times it was a bit of a rudderless ship, and from nearly day one I was left to my own devices to code things and simply "figure it out". That wouldn’t be too bad, but the code base, for the most part, was out of date and not particularly well written. There were lots of hacks and band-aids with few standards to be followed. Over the course of my spent with them I spent hours at sites like [Stack Overflow](http://stackoverflow.com/ "Stack Overflow") (still to this day actually), [A List Apart](http://alistapart.com/ "A List Apart"), and, big huge props to my first genuine mentors over at [Boagworld](http://boagworld.com/blog/ "Boagworld") (they don’t know it but I owe those guys a lot).  In the interest of sparing you the details, I’ve picked up some knowledge over the past several years but I’m still not totally where I want to be.  I know you’re asking yourself “what does any of this have to do with what you said in the first paragraph?”; chill braj, I’m gonna tie it all together.
+
+Fast forward to today. I’ve been the head of development for this growing company for nearly two years and I’ve realized something. I don’t want to be that firm I started out with. I want this place to kick ass. I want everything we do to follow best practices, I want to create, learn, and grow as a developer and as part of a team. But this blog ties it all together. Blogging about my adventures in development are going to help me find new standards and doo hickeys to play around with that may help you and will sure as heck help me create better websites.
+
+So, that’s it. If you think my code is crap (it may just be) and you can do it better, just throw me a comment, I welcome it! That’s the whole point here. I learn, you learn, we learn.
+
+

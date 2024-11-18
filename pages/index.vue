@@ -1,3 +1,3 @@
 <template>
-    this is actually the home page
+    <BlogRoll />
 </template>

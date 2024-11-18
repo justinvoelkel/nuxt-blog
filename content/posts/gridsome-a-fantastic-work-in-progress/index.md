@@ -3,6 +3,7 @@ title: Gridsome - A Fantastic Work in Progress
 date: 2021-07-01T01:30:07.396Z
 description: My experience using gridsome the jamstack framework for vue
 ---
+
 It turns out JAMstack frameworks and workflows have become pretty popular lately. What's not to like; you get the benefits of modern JS toolchains and the speed of a static website. So when it came time for my team and I to rewrite two branded websites that would need to hook into some sort of content management system it was a great opportunity to leverage this new stack to our advantage. Our team is comprised of only three contributors and two of have prior experience with Vue so Gridsome was the logical choice. We've released one site already and are progressing quickly on the second so I wanted to take a time out and review the pros and cons we've encountered up to this point. Let's get into it and start with the pros.
 
 ## Pros
@@ -18,11 +19,12 @@ This is the primary, and expected, benefit of using any JAMstack framework or st
 ### You get some nice bells and whistles
 
 I couldn't think of a clearer, less idiomatic, way of phrasing this. But, you get some out of the box functionality that really helps performance:
+
 - Data sourcing (important for us because we're hooking into a headless CMS)
 - GraphQL data layer (also important for us because our headless CMS choice exposes it's own GraphQL API)
 - Automatic codesplitting
 - Plugins (_kind of..._ the ecosystem here can leave a bit to be desired...I'll expand in the cons)
-- Image optimization (_kind of..._I'll expand in the cons)
+- Image optimization (\_kind of...\_I'll expand in the cons)
 - Link prefetching makes everything feel nice and snappy
 
 ### Simple deploys

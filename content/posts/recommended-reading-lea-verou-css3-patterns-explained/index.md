@@ -14,6 +14,4 @@ The post was written explicitly for the novice so it was right up my alley. I’
 
 The other interesting thing I took away from this was that you could layer as many of these gradients on top of each other as necessary. This technique coupled with transparent backgrounds allows for ever more complex designs. If you go take a look at some of the examples she’s posted the heavier ones can use upward of ten layered gradients that all have a dizzying amount of color stops.
 
-I thought I might want to try some of these out for myself so I ran over to [codepen.io](http://codepen.io "CodePen") to create a few myself following her examples. I quickly realized I wasn’t going to be creating any elaborate and awesome patterns any time soon but creating a zig-zag or [checkerboard design](http://codepen.io/stin4u "CSS3 checkerboard") was super do-able.
-
-
+I thought I might want to try some of these out for myself so I ran over to [codepen.io](http://codepen.io 'CodePen') to create a few myself following her examples. I quickly realized I wasn’t going to be creating any elaborate and awesome patterns any time soon but creating a zig-zag or [checkerboard design](http://codepen.io/stin4u 'CSS3 checkerboard') was super do-able.

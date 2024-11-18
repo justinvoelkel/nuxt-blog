@@ -6,13 +6,11 @@ description: Problem Solved - Parsing Large XML Files in PHP
 
 My first problem solved post! Let me just quickly outline how I’m going to do this and will be doing it from henceforth. I’m going to try my best to break down the problem into three digestible pieces – The Situation, The Problem, and The Solution. I feel like these are fairly self explanatory; so lets jump right in, shall we?
 
-
 ## The Situation – Let’s Track Phone Calls:
 
 <div class="wp-caption alignright" id="attachment_32" style="width: 212px">[![Dom DeLuise](http://justinvoelkel.me/wp-content/uploads/2013/10/dom-202x300.jpg)](http://justinvoelkel.me/wp-content/uploads/2013/10/dom.jpg)This Dom is clearly better than THE DOM. Ok maybe that’s harsh…
 
 </div>The company I currently work for hosts a call center for taking phone orders for, well, lets say widgets. All of our phones are VoIP hosted over at a company called [Virtual PBX](http://www.virtualpbx.com/ "Virtual PBX"). These guys do a pretty bang-up job if your in the market by the way. Anyway, as part of their administrator dashboard they offer generated reports for specified date periods. There was a popular consensus amongst the owners that it would be really cool to track call volume by hour and by location (areacode / city). Luckily, VPBX offers all of these reports as an XML download. These reports included the incoming number and the date and time of the call, pretty easy to parse right? What could possibly go wrong?
-
 
 ## The Problem – Growing Pains:
 
@@ -25,26 +23,22 @@ Full disclosure, so that you don’t immediately utter ‘ugh…Noob’, I was s
 
 With my inefficiencies front and center, I picked myself up and took to google to find my answer. Turns out this is a fairly common problem so I didn’t feel too awful. The suggested solution was a simple one – do NOT create a new DOMDocument. The problem with the DOM solution is that at the time the XML file is loaded it loads the entire XML file into memory on the server. So, this is actually fine to do if your working on a small document, like when I started out. By the time this thing ground to a halt our call volume had increase from a couple thousand calls in a month to over 20,000(!). This would then result in the server attempting to load and traverse an XML file with 160,000 plus lines in it.
 
-Not fun times, dude. Needless to say I was instantly heart broken for our poor, overworked VPS server; I DIDN’T KNOW MAN – * I DIDN’T KNOWWW*! It turns out that the path to efficiency here was to use [XMLReader](http://www.php.net/manual/en/intro.xmlreader.php "XMLReader") in conjunction with  [SimpleXML](http://php.net/manual/en/book.simplexml.php "SimpleXML"). Unlike loading the document into the DOM or just using SimpleXML on it’s own – XMLReader does NOT read the entire file at once. It will load the file one element at a time as you iterate over the file.
+Not fun times, dude. Needless to say I was instantly heart broken for our poor, overworked VPS server; I DIDN’T KNOW MAN – _ I DIDN’T KNOWWW_! It turns out that the path to efficiency here was to use [XMLReader](http://www.php.net/manual/en/intro.xmlreader.php 'XMLReader') in conjunction with  [SimpleXML](http://php.net/manual/en/book.simplexml.php 'SimpleXML'). Unlike loading the document into the DOM or just using SimpleXML on it’s own – XMLReader does NOT read the entire file at once. It will load the file one element at a time as you iterate over the file.
 
 Now, I believe this can be accomplished using XMLReader by itself – but, I chose to use a combination of XMLReader (to iterate over the file) and SimpleXML (to parse and assign the individual node values). This may end up causing the performance to dip a hair but I found SimpleXML so much easier to work with. So, to the code!
 
-***Originally, this was my approach (cliff notes version):***
+**_Originally, this was my approach (cliff notes version):_**
 
- $xmlFile = $_POST['xmlFile']; $dom = new DOMDocument(); //load the selected XML file to the DOM $dom->load( 'saved/'.$xmlFile ); $calls = $dom->getElementsByTagName('call'); foreach($calls as $call): //this section would essentially do the following //for the select few bits of info needed like phone and date //Iterate and pull the appropriate info $info = getElementByTagName('neededTagInfo'); //push those values to an array for evaluation array_push($info,$callStack); endforeach;
+$xmlFile = $_POST['xmlFile']; $dom = new DOMDocument(); //load the selected XML file to the DOM $dom->load( 'saved/'.$xmlFile ); $calls = $dom->getElementsByTagName('call'); foreach($calls as $call): //this section would essentially do the following //for the select few bits of info needed like phone and date //Iterate and pull the appropriate info $info = getElementByTagName('neededTagInfo'); //push those values to an array for evaluation array_push($info,$callStack); endforeach;
 
-*** After things went wonky, that transformed into this (again cliffnoted for your pleasure):***
+**_ After things went wonky, that transformed into this (again cliffnoted for your pleasure):_**
 
- $xmlFile = $_POST['xmlFile']; $reader = new XMLReader(); //load the selected XML file to the DOM $reader->open('saved/'.$xmlFile); while ($reader->read()): if ($reader->nodeType == XMLReader::ELEMENT && $reader->name == 'call'){ $node = new SimpleXMLElement($reader->readOuterXML()); $info = $node->elementName; //push those values to an array for evaluation array_push($info,$callStack); } endwhile;
+$xmlFile = $_POST['xmlFile']; $reader = new XMLReader(); //load the selected XML file to the DOM $reader->open('saved/'.$xmlFile); while ($reader->read()): if ($reader->nodeType == XMLReader::ELEMENT && $reader->name == 'call'){ $node = new SimpleXMLElement($reader->readOuterXML()); $info = $node->elementName; //push those values to an array for evaluation array_push($info,$callStack); } endwhile;
 
-
-## 
-
+##
 
 ## Conclusion:
 
 As a result of swapping out the DOM for XMLReader this script, that could take upwards of two minutes to complete, now completes is task in right around twenty seconds – that’s with an extremely large file. With older/smaller files the parsing is nearly instant.
 
 For me this really drives just how important research is as part of our job. The difference between just solving a problem and solving it in a ‘more’ correct way can just be a matter of a few more hours spent browsing examples, but in the end it’s worth it. In this case however, it would have been hard to identify the problem before it actually happened.
-
-

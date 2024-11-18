@@ -1,12 +1,13 @@
 ---
-title: Back to Basics - Clean Code Chapter Three 
-date:  2022-03-24T18:23:46.782
+title: Back to Basics - Clean Code Chapter Three
+date: 2022-03-24T18:23:46.782
 description: Revisiting good practices reading Clean Code by Robert Martin
 ---
 
 Continuing my journey back into Uncle Bob's _Clean Code_ I've completed chapter three on functions. There is a lot of gold in the points covered here. I found the use of before and after code examples with refactors to be extremely helpful to really draw the distinction between good and bad implementation. Also, in that regard, I really appreciate being given a real world code example as part of the text. One of my biggest issues with these types of technical books is that often times the examples are simple by design to only convey a concept; that is sometimes useful but I also find it difficult to then find practical examples I would apply that concept to. Overall I learned quite a bit and so I'm just going to jump into my notes.
 
 ### The Rules:
+
 - The first rule is that _functions should be small_
   - This is such an easy thing to over look. Seriously - it is _very_ easy to write something that accomplishes your goal that is verbose and simply say "well, I don't think this can be broken down so...moving on".
   - Keeping the goal of _small_ functions top of mind can force you to parse out your task a bit different ahead of time.
@@ -23,8 +24,8 @@ Continuing my journey back into Uncle Bob's _Clean Code_ I've completed chapter 
   - your functions _should not be large enough to hold nested structures_
   - any more probably signals that you have a potential function call
 
-
 ### Do One Thing:
+
 I've always tried to follow this as a very basic principle. But, honestly - oftentimes it's really hard to draw the line one what _one_ thing you are accomplishing with your function. If you are parsing a string in a function and searching for a given value and returning true if found; is that two distinct things? Even if the parsing and searching can be chained together or they're very short snippets of code in-and-of themselves? We're given some direction on how to deduce if we're doing _more_ than one thing in this subsection.
 
 - FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY. - I want a giant print out of this for my wall as a constant reminder.
@@ -39,6 +40,7 @@ I've always tried to follow this as a very basic principle. But, honestly - ofte
   - I need to also briefly mention the 'broken windows' analogy referenced in this chapter. It's a very real thing that most all of the teams I've worked on face. I think it all comes back to something discussed in chapter 1 - caring. You have to care enough about the code and your future selves to put in the time _now_ to ensure refactors are made and best practices are followed.
 
 ### Switch Statements
+
 Here's my honest thoughts - don't use them. As noted it's hard to make a short/small switch statement because they are, by default, verbose. Personally, I also find them hard to read and once you've surpassed a hand full of cases they're even harder to comprehend. That falls in line with most of what's in this subsection but there are good points made for switch statement use cases.
 
 - `switch` statements can be tolerated when they only appear once, are used to create polymorphic objects, and are positioned behind an interface.
@@ -46,6 +48,7 @@ Here's my honest thoughts - don't use them. As noted it's hard to make a short/s
   - After seeing the code though I can see how this can make for a reasonable implementation. At least if this baloons with different cases it's relegated to one spot.
 
 ### Use Descriptive Names
+
 Here we are back at naming - not much to add here but it really drives home the concepts delivered in chapter two.
 
 - A long descriptive name is better than a short enigmatic one
@@ -53,6 +56,7 @@ Here we are back at naming - not much to add here but it really drives home the 
 - I've always thought long names were bad practice. When I first started the Zend Framework naming conventions were basically a punchline. But at this point in my career I can really appreciate clarity over brevity.
 
 ### Function Arguments
+
 This is a big one for me. While the concept(s) here may be sort of obvious at first glance the examples given of when it's _ok_ or _reasonable_ to use a diadic or triadic helps to add some contrast and remind us that these aren't concrete rules - don't try to write cartesian points that only take one argument _unless you really want to I guess_.
 
 - Monadic, diadic, and triadic function arguments
@@ -64,12 +68,14 @@ This is a big one for me. While the concept(s) here may be sort of obvious at fi
     - so, instead of `someFunction(foo, bar, baz)` you abstract those values to a class/object and pass like `someFunction(FooBarBaz $foo)`; not horribly well named but you get it.
 
 ### A Few More Naming Things
+
 There are small subjections in the chapter that cover a bit more on naming conventions. Specifically, encoding verbs and keywords into function names.
 
 - It could be more explicit to name a diadic function with a verb/keywords encoded into the name directly.
   - for example re-naming `assertEquals` to `assertExpectedEqualsActual` naturally tells the developer that the order of the arguments are `expected` then `actual`
 
 ### Side Effects, Separation, and Exceptions
+
 This post is pretty lengthy so I'm going to lump the last few subsections together. However, that is not to imply there is less value here. I would argue that these next few subsections cover some of the most important topics in the chapter.
 
 - Functions should not have side effects

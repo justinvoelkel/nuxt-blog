@@ -4,8 +4,7 @@ date: 2015-03-08T04:33:48.000Z
 description: Laravel and AngularJS - Part Five - Delete Posts and Status Updates
 ---
 
-So, lets try and bring this sucker home, shall we? The [previous part to this series](http://justinvoelkel.me/laravel-angularjs-part-four/ "Laravel and AngularJS: Part Four – The Dashboard Part Deux and a Posts Party") covered *most* of our CRUD capabilities – but we haven’t yet covered how to delete posts from our blog application. Let’s start there and eventually we’re going to move into displaying a blog roll of our posts on our blog’s index and links to individual posts.
-
+So, lets try and bring this sucker home, shall we? The [previous part to this series](http://justinvoelkel.me/laravel-angularjs-part-four/ 'Laravel and AngularJS: Part Four – The Dashboard Part Deux and a Posts Party') covered *most* of our CRUD capabilities – but we haven’t yet covered how to delete posts from our blog application. Let’s start there and eventually we’re going to move into displaying a blog roll of our posts on our blog’s index and links to individual posts.
 
 ## Just Something to Click
 
@@ -13,8 +12,7 @@ Let’s start with the easiest thing we can do and create the button to delete a
 
 <table class="table table-striped"> <tr> <th></th> <th>id</th> <th>title</th> <th></th> </tr> <tr ng-repeat="post in posts"> <td><a href="#/edit/{{post.id}}" class="btn btn-success btn-xs">edit</a></td> <td>{{post.id}}</td> <td>{{post.title}}</td> <td><a ng-click="remove(post.id,$index)" class="btn btn-danger btn-xs">delete</a></td> </tr> </table>
 
-We’ve added in a simple delete ‘button’ – I’ve used an anchor and a class – but you’ll notice no link attached. It’s because we’ll be using angular’s [ng-click directive](https://docs.angularjs.org/api/ng/directive/ngClick "AngularJS ng-click directive") to call a function in our controller. It’s a simple as it sounds — when the button is clicked, it calls the remove function in our controller and feeds it the id of our current post along with it’s index value within our scope array of posts – this will be important a bit later. Since it’s part of our ng-repeat, and a new button is created unique for each post the post.id will correspond exactly with the post id in our database. Ok great, now lets setup this function.
-
+We’ve added in a simple delete ‘button’ – I’ve used an anchor and a class – but you’ll notice no link attached. It’s because we’ll be using angular’s [ng-click directive](https://docs.angularjs.org/api/ng/directive/ngClick 'AngularJS ng-click directive') to call a function in our controller. It’s a simple as it sounds — when the button is clicked, it calls the remove function in our controller and feeds it the id of our current post along with it’s index value within our scope array of posts – this will be important a bit later. Since it’s part of our ng-repeat, and a new button is created unique for each post the post.id will correspond exactly with the post id in our database. Ok great, now lets setup this function.
 
 ## Wiring Up Delete
 
@@ -29,7 +27,6 @@ To complete our work in the angular side we just need to fill out our delete fun
 delete: function(id){ var request = $http.delete('api/posts/'+id); return request;}
 
 Using the correct http verb here is very important. In previous posts we’ve set up a resource for our Post model. That means that there is already a pre-configured route and method in our controller to handle this request! Fantastic, we’ve gotten our delete request setup and sending Laravel the id of the post we want to remove. Now, we just need to catch that request, perform the requested action, and send a result back. Onward!
-
 
 ## Deleting with Laravel
 
@@ -51,16 +48,15 @@ Just a few last tidbits here — let’s go back to our <span class="highlight"
 
 <h1>The Most Dashing of Boards</h1> <div class="col-md-12"> <p class="bg-info"> {{flash}} </p> </div>
 
-Also, if you delete a post right now, you’ll notice you get your flash message of success or failure but the record remains in our list. Why don’t we clean that up. Remember that second value passed into our remove function? You guessed it, time to put it to good use. Within our delete function inside of our ‘PageController’ controller we just need to [splice the array](http://www.w3schools.com/jsref/jsref_splice.asp "javascript array splice") after we know we’ve successfully deleted the record from the database. The new remove function should look like this:
+Also, if you delete a post right now, you’ll notice you get your flash message of success or failure but the record remains in our list. Why don’t we clean that up. Remember that second value passed into our remove function? You guessed it, time to put it to good use. Within our delete function inside of our ‘PageController’ controller we just need to [splice the array](http://www.w3schools.com/jsref/jsref_splice.asp 'javascript array splice') after we know we’ve successfully deleted the record from the database. The new remove function should look like this:
 
 $scope.remove = function (id, index){ var removePost = CRUD.delete(id); removePost.success(function(response){ $scope.flash = response.status; $scope.posts.splice(index,1); }) }
 
 Now, when the post has been confirmed deleted we can officially remove the record from our list.
 
-
 ## Setting The Post Status
 
-Wayyyy back in [part one of this series](http://justinvoelkel.me/laravel-and-angularjs-part-one-prep-your-app/ "Laravel and AngularJS: Part One – Prep Your App") we created a migration for our post tables and included a column called ‘live’ defaulted to 0 (false). We want to be able to control the status of our posts moving forward and not just automatically output every half written post we have in our queue. Since we just wired up our delete button you can probably figure out a similar process we might go about for setting the post status. We’ll need to add another button that will fire a function to change the post’s ‘live’ status from 0 (false) to 1 (true) and update our record in the database. Luckily we already have an update request setup in our CRUD service. First the button, I’ve updated our table with a new blank header and a button below — this may look confusing at first:
+Wayyyy back in [part one of this series](http://justinvoelkel.me/laravel-and-angularjs-part-one-prep-your-app/ 'Laravel and AngularJS: Part One – Prep Your App') we created a migration for our post tables and included a column called ‘live’ defaulted to 0 (false). We want to be able to control the status of our posts moving forward and not just automatically output every half written post we have in our queue. Since we just wired up our delete button you can probably figure out a similar process we might go about for setting the post status. We’ll need to add another button that will fire a function to change the post’s ‘live’ status from 0 (false) to 1 (true) and update our record in the database. Luckily we already have an update request setup in our CRUD service. First the button, I’ve updated our table with a new blank header and a button below — this may look confusing at first:
 
 <tr> <th></th> <th></th> <th>id</th> <th>title</th> <th></th> </tr> <tr ng-repeat="post in posts"> <td><a href="#/edit/{{post.id}}" class="btn btn-success btn-xs">edit</a></td> <td> <a class="btn btn-xs" ng-click="status(post)" ng-class="{'btn-success':post.live==1,'btn-warning':post.live==0}"> <span ng-show="post.live==1">click for draft</span> <span ng-show="post.live==0">click for live</span> </a> </td> <td>{{post.id}}</td> <td>{{post.title}}</td> <td><a ng-click="remove(post.id,$index)" class="btn btn-danger btn-xs">delete</a></td> </tr>
 
@@ -75,9 +71,6 @@ public function update($id) { $post = Post::find($id); if($post){ $post->title =
 If all of that is looking good, you should now be able to toggle the post status between live and draft with just a click of a button!  
 [![blog status update](http://justinvoelkel.me/wp-content/uploads/2015/03/blog-status-update-result.png)](http://justinvoelkel.me/wp-content/uploads/2015/03/blog-status-update-result.png)
 
-
 ## Obligatory End Part
 
 Ok, so we covered a few additional items here — how to delete posts and how to update a posts status from draft (0) to live (1). This one ran a little long, when do they not? So in the final post in this series, part six, I’m going to cover setting up the front end templates to display our blog roll (all the posts with a post excerpt and link) and the ‘single’ (if your familiar with wordpress) post templates. Till then, keep it class interwebs!
-
-

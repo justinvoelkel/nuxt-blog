@@ -4,7 +4,7 @@ date: 2021-07-27T01:30:07.396Z
 description: Shipping legacy code without SSH or SFTP
 ---
 
-Automation is great. I remember when I started my first job a million years ago we were shipping code on demand using sftp from Dreamweaver ***shudder***. We've come so far since then. The proliferation of great services like Travis CI, Circle CI, Jenkins, LaunchDarkly, etc. have propelled us into a new era of wonderful efficiencies. Fast forward to 2021 and my current position and.....we're still shipping code manually? Yes. When I arrived our team owned some _legacy_ infrastructure. This isn't necessarily a bad thing, in fact it's a common reality for a lot of companies. Living with legacy code is one thing but living with antiquated and _manual_ delivery of said code is not something I wanted to continue to deal with.
+Automation is great. I remember when I started my first job a million years ago we were shipping code on demand using sftp from Dreamweaver **_shudder_**. We've come so far since then. The proliferation of great services like Travis CI, Circle CI, Jenkins, LaunchDarkly, etc. have propelled us into a new era of wonderful efficiencies. Fast forward to 2021 and my current position and.....we're still shipping code manually? Yes. When I arrived our team owned some _legacy_ infrastructure. This isn't necessarily a bad thing, in fact it's a common reality for a lot of companies. Living with legacy code is one thing but living with antiquated and _manual_ delivery of said code is not something I wanted to continue to deal with.
 
 ## Some Informal Background
 
@@ -27,7 +27,6 @@ There was an extra hitch in this whole set up. If you're astute you may have loo
 My first thought was to change the IIS site path(s) from local directories to a SMB mount to an Azure file share. This _is_ possible and it should work. Unfortunately, I wasn't ever able to get this to work. I made sure to mount the remote drive as a local user, add that local user to the IIS_USRS group, and ensured that IIS knew which user to try to access the folder as. Nothing I did seemed to shake this loose so I went back to the drawing board.
 
 My second approach would certainly _work_ but it felt less than ideal. I decided I would set up a powershell script to robocopy newer files from the SMB share to the local directory that IIS was serving the app from. Then I could just use the task scheduler to essentially long poll for changes. This I got to work pretty quickly but I thought I could do better.
-
 
 ## Automating Deploys with Azure File Sync
 

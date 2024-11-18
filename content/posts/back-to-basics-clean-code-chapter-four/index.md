@@ -1,14 +1,15 @@
 ---
-title: Back to Basics - Clean Code Chapter Four 
+title: Back to Basics - Clean Code Chapter Four
 date: 2022-03-29T16:53:05.644Z
 description: Revisiting good practices reading Clean Code by Robert Martin
 ---
 
-Chapter four of _Clean Code_ by Mr. Uncle Bob (as I've taken to calling him in my head) - covers commenting our code. This is a bit of controversial topic in my eyes. I fully understand and acknowledge the sentiment that 'good code is self documenting' - which is mostly the opinion expressed in chapter four; but I think some people make that statement too binary. Should we never comment things then? Is the addition of a comment ackowledging that our code is _bad_? Personally, I think no - comments are a good addition sometimes and they can exist in even good and expressive code. 
+Chapter four of _Clean Code_ by Mr. Uncle Bob (as I've taken to calling him in my head) - covers commenting our code. This is a bit of controversial topic in my eyes. I fully understand and acknowledge the sentiment that 'good code is self documenting' - which is mostly the opinion expressed in chapter four; but I think some people make that statement too binary. Should we never comment things then? Is the addition of a comment ackowledging that our code is _bad_? Personally, I think no - comments are a good addition sometimes and they can exist in even good and expressive code.
 
 In the interest of acting with humility - I've been so guilty of a lot of these bad practices in the past. I think time has taught me when and when not to use comments and how to make them useful but let's see and get into the notes:
 
 ## Comments
+
 - Mr. Uncle Bob hits us right out of the gate with _"comments are, at best, a necessary evil"_.
   - I think that goes a long way setting the expectation and tone for the rest of the chapter - _try to not write them_
   - I don't fully disagree with this
@@ -22,8 +23,8 @@ In the interest of acting with humility - I've been so guilty of a lot of these 
 - Truth is always in code.
   - Yes, this is also true. And, some code is very very bad and hard to decipher. Splitting the difference - if there were some slightly out of date comments in bad code that help illuminate _some_ path or intent - is that not helpful? Is it _always_ better to rely on just the code - even when it requires copious amounts of mental overhead to understand?
 
-
 ## Explain Yourself in Code
+
 - Code can make a poor vehicle for explanation.
   - Agreed, and I think that's my argument for the relevance of comments in the right context.
   - The example given resonates with me (checking several statements in-line inside of a conditional vs. obj.checkConditions())
@@ -31,6 +32,7 @@ In the interest of acting with humility - I've been so guilty of a lot of these 
     - I think I did this a lot because it felt like the latter was an unneccessary abstraction...till you go back to that code six months later and need to remind yourself what all of those in-line conditions are again.
 
 ### Good Comments
+
 - Legal comments - makes sense if you need them
 - Informative comments
   - a little vague - I don't think anyone is leaving a comment for malicious purposes
@@ -59,6 +61,7 @@ In the interest of acting with humility - I've been so guilty of a lot of these 
     - TIL the cost of this maintenance is worth it for a public API but not so much for private.
 
 ### Bad Comments
+
 I'm going to say right off the bat that some of these feel like those monochromatic segments of an infomercial. Meaning they feel like an overly clumsy and wild representation of what a developer would actually do. Still valid points are delivered.
 
 - Mumbling
@@ -105,10 +108,9 @@ I'm going to say right off the bat that some of these feel like those monochroma
   - In the case of inobvious connection it is just as much to do with the code being written as the comment supporting it.
     - this would probably be a good spot to use variable names. In the example the bits of code in question might be able to be pulled out into variables with expressive names or clarifying comments of their own.
 - Function Headers
+
   - "A well-chosen name for a small function that does one thing is usually better than a comment header"
 
   And that is pretty much it. As an added bonus I learned the meaning of the word _anathema_. In reading this chapter I felt like I would be really light on notes but surprisingly that has not been the case.
 
   Moving ahead to chapter five on formatting!
-
-

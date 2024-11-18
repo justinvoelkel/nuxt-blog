@@ -1,5 +1,5 @@
 ---
-title: Being a Dad and a Developer 
+title: Being a Dad and a Developer
 date: 2022-04-05T16:53:05.644Z
 description: It's probably better to read that as being a parent first and foremost as well as a developer. Without a doubt having kids is one of the best things that's ever happened to me. But, how do you balance the responsibilities of being a parent and trying to stay up to date in an industry constantly trying to leave you behind?
 ---
@@ -25,5 +25,3 @@ That seems like obvious advice but with two kids things come up and it can be re
 The Post-it thing is a reference to 3M - the guy who invented them did so using 3M's sanctioned 'bootlegging' time that was like informal R&D and explorative time. Today lots of software companies offer some sort of 20% time or similar where they allow you to work on internal projects of your choosing or even your own side projects. If you are a parent this can be a god-send. This has the added benefit of raising your profile if you are working on internal projects and, you never know, you may come up with something extremely useful your company would want. It is a win-win.
 
 These are just a few of the ways I am trying to approach being a Dad dev. The order of that statement is intentional - I always want for my kids and family to be my first priority. But, the reality is I need to keep up with technologies that are hell bent on leaving me in the dust. If you are a parent struggling to find ways to advance yourself I hope this helped _(even if it's just knowing you aren't alone in your struggles)_.
-
-

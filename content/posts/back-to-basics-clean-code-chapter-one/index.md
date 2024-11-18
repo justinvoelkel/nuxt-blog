@@ -1,6 +1,6 @@
 ---
-title: Back to Basics - Clean Code Chapters One and Two 
-date: 2022-03-11T22:20:14.670Z 
+title: Back to Basics - Clean Code Chapters One and Two
+date: 2022-03-11T22:20:14.670Z
 description: Revisiting good practices reading Clean Code by Robert Martin
 ---
 
@@ -12,7 +12,7 @@ This chapter mostly serves as a soft intro to the book, what it's about, and who
 
 ### The Total Cost of Owning a Mess
 
-This subsection of the chapter is only a few paragraphs but manages to be one of the bigger take-aways for me. In short, it covers the long term implication (cost) of bad code. The book illustrates the asymptotic relationship of productivity over time given the relative tidyness of a codebase. Having worked primarily at small companies and start-ups I've seen this play out time and time again. I've also been someone who's contributed their fair share of poor code in the name of speed or "just getting it done". In Jeff Lawson's book _Ask Your Developer_ he encapsulates the business mindset at work here (paraphrasing) "to the business there's never time to do it the first time but always time to do it over and over again later". The point being the cost of slowing down and approaching a problem with intellect from the start is an investment - and by being cheap (rushing) we're incurring technical debt. If you're part of an organization that regularly pays down their technical debt that might be ok - you are trading quality for speed for some important reason but the understanding is that trade off comes with a price that eventually comes due. If you are part of an organization that _does not_ regularly pay down that technical debt...well...it compounds. The debt you incurred initially doesn't just sit in a vaccuum waiting to be addressed - it's part of a larger system that is interconnected - and as you add features to that system things only get worse and worse. This is how, over time, productivity drops exponentially. The cost of that is not only missing features and defects but potentially unhappy customers, unhappy developers, and unmotivated workers. Face it - no one wants to go back and work on the legacy turd application. 
+This subsection of the chapter is only a few paragraphs but manages to be one of the bigger take-aways for me. In short, it covers the long term implication (cost) of bad code. The book illustrates the asymptotic relationship of productivity over time given the relative tidyness of a codebase. Having worked primarily at small companies and start-ups I've seen this play out time and time again. I've also been someone who's contributed their fair share of poor code in the name of speed or "just getting it done". In Jeff Lawson's book _Ask Your Developer_ he encapsulates the business mindset at work here (paraphrasing) "to the business there's never time to do it the first time but always time to do it over and over again later". The point being the cost of slowing down and approaching a problem with intellect from the start is an investment - and by being cheap (rushing) we're incurring technical debt. If you're part of an organization that regularly pays down their technical debt that might be ok - you are trading quality for speed for some important reason but the understanding is that trade off comes with a price that eventually comes due. If you are part of an organization that _does not_ regularly pay down that technical debt...well...it compounds. The debt you incurred initially doesn't just sit in a vaccuum waiting to be addressed - it's part of a larger system that is interconnected - and as you add features to that system things only get worse and worse. This is how, over time, productivity drops exponentially. The cost of that is not only missing features and defects but potentially unhappy customers, unhappy developers, and unmotivated workers. Face it - no one wants to go back and work on the legacy turd application.
 
 ### The Art of Clean Code / What is Clean Code
 
@@ -44,34 +44,42 @@ Talk about going back to the basics - naming is one of the most fundamental conc
 I'm going to just throw a few of my thoughts/notes in on some of the subsections this chapter offers.
 
 ### Use Intention Revealing Names
+
 - As a baseline we should choose names that mean something (single letter variables being the poster child of what not to do). But, the name chosen should also serve to reveal intent. When variables become part of a bigger piece of code they should serve to explain what is going on and not _just_ hold values.
 
 ### Avoid Disinformation
+
 - Avoid using names that can be misinterpreted. Using the name `hp` to represent hypotenuse is a poor choice because it can represent so many different types of things (horsepower??).
 - Don't refer to constructs as things that they aren't - meaning if you are creating a collection of `Foo` don't bother calling the variable to hold it `fooList` or `FooList`.
 - Avoid using similar variations of names - especially true when names are long and differences are harder to spot.
 
 ### Make Meaningful Distinctions
+
 - Avoid using indexes for things in a series (a1, a2, ...a[n])
 - Avoid using noise words like data or info that contribute little to the understanding of what they represent (what's the difference between AccountData and AccountInfo?)
 
 ### Use Pronounceable Names
+
 - This one is pretty self explanatory but - use real world names for the real world things they represent and try to avoid truncating or mixing word truncations together to form names
 
 ### Use Searchable Names
+
 - Yes! yes! As someone who, maybe too often, uses grep to shortcut to finding things in the code base this is a must
 - I've actually worked in code that had such ambiguous naming that grepping around was at best a misleading time sink and at worst a complete waste of time because someone left a variable or method named `foo` or `test`
 
 ### Class Names/Method Names
+
 - Classes should have a noun or noun phrase as a name with out using noise words. Don't use verbs.
 - Methods should be your verbs (because their acting on the noun).
 - Accessors, mutators, and predicates should be prefixed with `get`, `set`, and `is`
 
 ### Don't Be Cute
+
 - Seriously just don't.
 - Code is fun but trying to determine the intent of something because someone was using inside jokes to name things is not fun.
 
 ### Add Meaningful Context
+
 - But don't go overboard with it.
 - For new eyes on code there's no real distinction between `state` as in _the condition of a thing_ and `state` a piece of territory organized under a government.
 - Adding something like `stateAbbr` or `addressState` are just fine.

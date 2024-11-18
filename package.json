@@ -9,7 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier . --write"
   },
   "dependencies": {
     "@nuxt/content": "^2.13.4",
@@ -17,5 +19,8 @@
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "prettier": "3.3.3"
   }
 }

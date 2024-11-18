@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import type {ParsedContent} from '@nuxt/content';
+import {useIntersectionObserver} from '@vueuse/core';
 
-const perPage = 10;
+const perPage = 5;
 const page = ref<number>(1);
 const posts = ref<ParsedContent[]>([]);
+const trigger = ref<HTMLElement | null>(null);
+
+useIntersectionObserver(trigger, async ([entry]) => {
+  if (entry.isIntersecting) {
+    await fetchMore();
+  }
+});
 
 posts.value = await queryContent('posts')
   .sort({date: -1})
@@ -36,7 +44,7 @@ async function fetchMore() {
         <p>{{ post.excerpt }}</p>
         <nuxt-link :to="post._path">Read more</nuxt-link>
       </li>
+      <span ref="trigger" />
     </ul>
-    <button @click="fetchMore">Load more</button>
   </main>
 </template>

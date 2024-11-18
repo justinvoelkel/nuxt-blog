@@ -3,7 +3,7 @@ import type { ParsedContent } from '@nuxt/content';
 
 const perPage = 10;
 const page = ref<number>(1);
-let posts = ref<ParsedContent[]>([]);
+const posts = ref<ParsedContent[]>([]);
 
 posts.value = await queryContent('posts')
     .sort({date: -1})

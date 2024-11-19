@@ -2,7 +2,6 @@
 
 <template>
   <main>
-    this is a post
     <ContentDoc />
   </main>
 </template>

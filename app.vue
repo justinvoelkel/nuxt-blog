@@ -1,6 +1,6 @@
 <template>
   <div>
-    navigation here
+    <TheNavigation />
     <NuxtPage />
   </div>
 </template>

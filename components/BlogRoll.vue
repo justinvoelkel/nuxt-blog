@@ -2,7 +2,7 @@
 import type {ParsedContent} from '@nuxt/content';
 import {useIntersectionObserver} from '@vueuse/core';
 
-const perPage = 5;
+const perPage = 10;
 const page = ref<number>(1);
 const posts = ref<ParsedContent[]>([]);
 const trigger = ref<HTMLElement | null>(null);
